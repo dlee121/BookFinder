@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{C7A33717-D825-1DE3-4AB2-E7090EB6DC86}") = "BookFinder", "Assembly-CSharp.csproj", "{1403AE20-4BB4-D681-1891-6D3B403D253C}"
+EndProject
+Project("{C7A33717-D825-1DE3-4AB2-E7090EB6DC86}") = "BookFinder", "Assembly-CSharp-Editor.csproj", "{225F6032-A632-43AC-C481-F0CAC3CFF264}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1403AE20-4BB4-D681-1891-6D3B403D253C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1403AE20-4BB4-D681-1891-6D3B403D253C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1403AE20-4BB4-D681-1891-6D3B403D253C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1403AE20-4BB4-D681-1891-6D3B403D253C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{225F6032-A632-43AC-C481-F0CAC3CFF264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{225F6032-A632-43AC-C481-F0CAC3CFF264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{225F6032-A632-43AC-C481-F0CAC3CFF264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{225F6032-A632-43AC-C481-F0CAC3CFF264}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
