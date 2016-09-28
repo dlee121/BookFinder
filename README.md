@@ -1,5 +1,4 @@
 # BookFinder
 
-BookFinder is a text recognition app that allows you to get useful information about any book at the press of a button.
-
-Simply point your camera at the book cover so that the title of the book is contained within the app's recognition window, then press the green button to see the top four matches for the book cover. Then press the correct book's icon to open its google books web page on your default web browser.
+Use BookFinder to easily access all the detailed information on a book!\n
+Simply point your phone camera at the book's cover, and the app will recognize the title, search for it online and deliver you the corresponding Google Books page, all at the press of a button!
