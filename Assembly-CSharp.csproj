@@ -121,10 +121,10 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="HtmlAgilityPack">
- <HintPath>/Users/dlee/BookFinder/Assets/HtmlAgilityPack.dll</HintPath>
+ <HintPath>/Users/dlee/Git/BookFinder/Assets/HtmlAgilityPack.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>/Users/dlee/BookFinder/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>/Users/dlee/Git/BookFinder/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

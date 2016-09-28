@@ -46,8 +46,9 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 	private string url;
 	private BookResult tempBook;
 	private Hashtable h;
+	private bool buttonsActive = false;
 
-    [SerializeField] 
+    [SerializeField]
     private Material boundingBoxMaterial = null;
     #endregion //PRIVATE_MEMBERS
 
@@ -58,7 +59,7 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 	public Button Result_2;
 	public Button Result_3;
 	public Button Result_4;
-	public Button Result_5;
+	public Text searchText;
     #endregion //PUBLIC_MEMBERS
 
 
@@ -87,7 +88,6 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
         {
             vuforiaBehaviour.RegisterVideoBgEventHandler(this);
         }
-		//title = textRecoCanvas.GetComponentInChildren<Text>();
     }
 
     void OnRenderObject()
@@ -115,16 +115,12 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
             // Update the list of words displayed
 			//maxBBHeight is set at this point
 			maxBBHeight = 0;
-			//title.text = "";
 			searchURL = "";
-            int wordIndex = 0;
 			foreach (var word in mSortedWords)
             {
 				if (word.Word != null && word.Word.Size.y > maxBBHeight)
 					maxBBHeight = word.Word.Size.y;
-				wordIndex++;
             }
-			wordIndex = 0;
 			foreach (var word in mSortedWords)
 			{
 				if (word.Word != null)
@@ -132,14 +128,12 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 					temp = word.Word;
 					if (temp.Size.y >= maxBBHeight * 0.7) 
 					{
-						//title.text += "+" + temp.StringValue;
 						searchURL  += "+" + temp.StringValue;
-						wordIndex++;
 					}
 				}
 			}
+			searchText.text = searchURL.Substring (1);
 			searchURL = "https://www.google.com/search?tbm=bks&q=" + searchURL.Substring(1); //the search url
-			//title.text = "https://www.google.com/search?tbm=bks&q=" + title.text.Substring(1);
 		}
     }
     #endregion //MONOBEHAVIOUR_METHODS
@@ -162,7 +156,6 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 		HtmlDocument htmldoc = new HtmlDocument ();
 		htmldoc.LoadHtml (htmlTXT);
 
-		//list is only alive for the scope of this function. maybe keep the function alive until next search?
 		List<BookResult> bookList=new List<BookResult>();
 		int fufu = 0;
 		foreach (HtmlNode node in htmldoc.DocumentNode.SelectNodes("//div[@class='rc']"))
@@ -176,6 +169,16 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 			bookList.Add(book);
 			fufu++;
 		}
+
+		if (buttonsActive == false) 
+		{
+			buttonsActive = true;
+			Result_1.gameObject.SetActive (true);
+			Result_2.gameObject.SetActive (true);
+			Result_3.gameObject.SetActive (true);
+			Result_4.gameObject.SetActive (true);
+		}
+
 		Result_1.GetComponentsInChildren<Text>()[0].text = bookList[0].title;
 		Result_1.GetComponentsInChildren<Text>() [1].text = bookList [0].author;
 		Result_1.onClick.AddListener (delegate() { go2Link (bookList [0].url); });
@@ -192,31 +195,12 @@ public class TextEventHandler : MonoBehaviour, ITextRecoEventHandler, IVideoBack
 		Result_4.GetComponentsInChildren<Text>()[1].text = bookList[3].author;
 		Result_4.onClick.AddListener (delegate() { go2Link (bookList [3].url); });
 
-		Result_5.GetComponentsInChildren<Text>()[0].text = bookList[4].title;
-		Result_5.GetComponentsInChildren<Text>()[1].text = bookList[4].author;
-		Result_5.onClick.AddListener (delegate() { go2Link (bookList [4].url); });
-
 	}
 
 	public void go2Link (string url)
 	{
 		Application.OpenURL (url);
 	}
-
-/*
-	public void ToggleAR ()
-	{
-		if (VuforiaBehaviour.Instance.enabled == false) {
-			VuforiaBehaviour.Instance.enabled = true;
-			GameObject.FindWithTag ("OnOff").SetActive (true);
-		} 
-		else {
-			VuforiaBehaviour.Instance.enabled = false;
-			GameObject.FindWithTag ("OnOff").SetActive (false);
-		}
-	}
-*/
-
 
     #region ITextRecoEventHandler_IMPLEMENTATION
     /// <summary>
